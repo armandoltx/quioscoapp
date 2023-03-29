@@ -5,7 +5,7 @@ export default function Layout({children, pagina}) {
   return (
     <>
       <Head>
-        <title>Cafge - {pagina}</title>
+        <title>Cafe - {pagina}</title>
         <meta name="description" content="Quiosco Cafeteria" />
       </Head>
       <div className='md:flex'>
