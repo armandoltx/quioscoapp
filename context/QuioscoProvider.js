@@ -16,6 +16,11 @@ const QuioscoProvider = ({children}) => {
     obtenerCategorias()
   },[])
 
+  // Coge la 1 categoria cuando haya un cambio en categorias asi se queda marcada
+  useEffect(() => {
+    setCategoriaActual(categorias[0])
+  },[categorias])
+
   const handleClickCategoria = id => {
     // console.log(id)
     const categoria = categorias.filter(cat => cat.id === id)
