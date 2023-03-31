@@ -49,6 +49,8 @@ const QuioscoProvider = ({children}) => {
         setPedido([...pedido, producto])
     }
 
+    setModal(false)
+    // console.log("hereee")
   }
 
   return(
@@ -59,8 +61,10 @@ const QuioscoProvider = ({children}) => {
         handleClickCategoria,
         producto,
         handleSetProducto,
+        handleAgregarPedido,
         handleChangeModal,
-        modal
+        modal,
+        pedido
       }}
     >
       {children}
