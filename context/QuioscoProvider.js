@@ -8,6 +8,7 @@ const QuioscoProvider = ({children}) => {
   const [categoriaActual, setCategoriaActual] = useState({})
   const [producto, setProducto] = useState({})
   const [modal, setModal] = useState(false)
+  const [pedido, setPedido] = useState([])
 
   const obtenerCategorias = async () => {
     const { data } = await axios('/api/categorias')
@@ -36,6 +37,18 @@ const QuioscoProvider = ({children}) => {
 
   const handleChangeModal = () => {
     setModal(!modal)
+  }
+
+  const handleAgregarPedido = ({categoriaId, ...producto}) => {
+    if(pedido.some(productoState => productoState.id === producto.id)) {
+      // console.log("el producto ya existe")
+       // Actualizar la cantidad
+       const pedidoActualizado = pedido.map(productoState => productoState.id === producto.id ? producto : productoState)
+       setPedido(pedidoActualizado)
+    } else {
+        setPedido([...pedido, producto])
+    }
+
   }
 
   return(
