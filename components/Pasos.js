@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from "next/router";
 
+
 const pasos = [
   { paso: 1, nombre: "Menú", url: "/" },
   { paso: 2, nombre: "Resumen", url: "/resumen" },
@@ -9,6 +10,18 @@ const pasos = [
 
 const Pasos = () => {
   const router = useRouter();
+
+  const calcularProgreso = () => {
+    let valor;
+    if (router.pathname === "/") {
+      valor = 2;
+    } else if (router.pathname === "/resumen") {
+      valor = 50;
+    } else {
+      valor = 100;
+    }
+    return valor;
+  };
 
   return (
     <>
@@ -24,6 +37,12 @@ const Pasos = () => {
             {paso.nombre}
           </button>
         ))}
+      </div>
+      <div className="bg-gray-100 mb-10">
+        <div
+          className="rounded-full bg-amber-500 text-xs leading-none h-2 text-center text-white progreso"
+          style={{ width: `${calcularProgreso()}%` }}
+        ></div>
       </div>
 
     </>
