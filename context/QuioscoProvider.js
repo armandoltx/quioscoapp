@@ -119,8 +119,8 @@ const QuioscoProvider = ({children}) => {
         handleEliminarProducto,
         nombre,
         setNombre,
-        total
-
+        total,
+        colocarOrden
       }}
     >
       {children}
