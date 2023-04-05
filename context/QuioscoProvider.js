@@ -1,11 +1,14 @@
 import { useState, useEffect, createContext } from "react"
 import axios from "axios"
 import { toast } from 'react-toastify' // la funcion q hacce q se muestre el toast
+import { useRouter } from "next/router"
 
 
 const QuioscoContext = createContext()
 
 const QuioscoProvider = ({children}) => {
+  const router = useRouter()
+
   const [categorias, setCategorias] = useState([])
   const [categoriaActual, setCategoriaActual] = useState({})
   const [producto, setProducto] = useState({})
@@ -31,6 +34,7 @@ const QuioscoProvider = ({children}) => {
     const categoria = categorias.filter(cat => cat.id === id)
     // console.log(categoria) imprime un arreglo
     setCategoriaActual(categoria[0])
+    router.push('/')
   }
 
   const handleSetProducto = producto =>{
