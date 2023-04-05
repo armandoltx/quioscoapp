@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import {formatearDinero} from '../helpers';
 
 const Orden = ({orden}) => {
@@ -10,7 +11,9 @@ const Orden = ({orden}) => {
   const completarOrden = async () => {
     try {
       await axios.post(`/api/ordenes/${id}`)
+      toast.success('Orden Lista')
     } catch (error) {
+      toast.error('Hubo un error')
       console.log(error)
     }
   }
